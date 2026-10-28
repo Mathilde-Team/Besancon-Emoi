@@ -1,5 +1,11 @@
 # Journal des versions
 
+## [Non publié]
+
+### Modifié
+- README : nouvelle section « Données et licences » (CGU du portail « Besançon et moi », Licence Ouverte des jours de collecte, licences des dépendances) (#32).
+- Retrait du fichier vide `=5.0.0`, laissé à la racine par une commande `pip install pypdf>=5.0.0` lancée sans guillemets (#32).
+
 ## [0.3.0] - 2026-10-22
 
 ### Ajouté
