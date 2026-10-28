@@ -147,6 +147,43 @@ Le courriel, le mot de passe et la session ne sont jamais écrits ; les autres p
   intégration à identifiants ; la session est dédiée à chaque compte.
 - Aucune donnée n'est envoyée ailleurs qu'au portail officiel.
 
+## Données et licences
+
+- **Portail « Besançon et moi »** : ce n'est pas une source de données
+  ouvertes. L'accès se fait avec le compte personnel de l'usager, sous les
+  [conditions d'utilisation du service](https://www.besancon-emoi.fr/account/accept)
+  (CGU) de la Ville de Besançon et de Grand Besançon Métropole. Les CGU ne
+  parlent pas de l'accès automatisé. Les clauses qui s'appliquent ici sont
+  les suivantes :
+  - art. 11 : l'usager n'a sur les informations du service qu'un **droit
+    d'usage privé, non collectif et non commercial**. Il ne doit ni entraver
+    ni perturber le service, ni collecter des données d'autres usagers ;
+  - art. 18 : la reproduction n'est autorisée que pour un usage **strictement
+    personnel et interne**, et toute extraction d'une partie substantielle
+    des informations est interdite. Le droit d'utiliser les logiciels du
+    service est personnel et non cessible ;
+  - art. 10 : l'usager est seul responsable de la confidentialité de ses
+    identifiants ;
+  - art. 19 : le service est fourni « en l'état », et ses informations n'ont
+    qu'une **valeur indicative**.
+
+  L'intégration est conçue pour rester dans ce cadre. Chaque usager la
+  configure avec son propre compte et ne lit que ses propres données :
+  contrats, factures, index. Les données restent dans son Home Assistant et
+  ne sont transmises à aucun tiers. Le portail est interrogé toutes les
+  6 heures, soit une session par compte. Aucune donnée n'est rediffusée.
+  L'usager reste responsable de l'usage qu'il fait de son compte. En cas de
+  doute sur l'usage d'un logiciel tiers, la Ville peut être contactée
+  (besancon-emoi@besancon.fr).
+- **Jours de collecte des déchets** : ils viennent du jeu de données ouvert
+  [Jours de collecte des déchets](https://data.grandbesancon.fr/opendata/dataset/joursDeCollecteDechets/)
+  d'OpenData Besançon, publié sous **Licence Ouverte** (Etalab) : réutilisation
+  libre en citant la source, « Grand Besançon Métropole — OpenData Besançon ».
+- **Dépendances** (manifest) : beautifulsoup4 (MIT), pypdf (BSD-3-Clause),
+  d'après PyPI.
+- **Code** : licence [MIT](LICENSE) (intégration Home Assistant, exception
+  SOCLE §1).
+
 ## Développement
 
 ```bash
