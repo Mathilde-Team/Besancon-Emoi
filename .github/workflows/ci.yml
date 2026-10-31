@@ -15,11 +15,14 @@ permissions:
 jobs:
   quality:
     name: Qualité (lint, tests)
-    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '{"group":"maison","labels":["self-hosted","linux"]}') }}
+    runs-on: ${{ fromJSON(vars.RUNS_ON_LINUX || '"ubuntu-latest"') }}
 
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v7
+
+      - name: Garde-fous de publication sur tag
+        run: python3 tests/test_workflow_release.py
 
       - name: Installation de uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
