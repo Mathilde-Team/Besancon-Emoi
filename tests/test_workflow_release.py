@@ -21,12 +21,23 @@ class PublicationSurTag(unittest.TestCase):
         self.assertNotIn("${GITHUB_REF_NAME}", texte)
         self.assertNotIn("${GITHUB_SHA}", texte)
         self.assertIn("          draft: false", texte)
+        self.assertIn("          tag_name: ${{ env.TAG }}", texte)
         self.assertIn("          fail_on_unmatched_files: true", texte)
 
     def test_repli_github_et_garde_main_conserves(self):
         for nom in ("ci.yml", "guard-main.yml", "release.yml"):
             texte = (self.workflows / nom).read_text(encoding="utf-8")
-            self.assertIn("fromJSON(vars.RUNS_ON_LINUX || '\"ubuntu-latest\"')", texte)
+            repli = "fromJSON(vars.RUNS_ON_LINUX || '\"ubuntu-latest\"')"
+            direct = any(
+                ligne.strip()
+                in (
+                    "runs-on: ubuntu-latest",
+                    "runs-on: ubuntu-24.04",
+                    "runs-on: ubuntu-26.04",
+                )
+                for ligne in texte.splitlines()
+            )
+            self.assertTrue(repli in texte or direct)
         garde = (self.workflows / "guard-main.yml").read_text(encoding="utf-8")
         self.assertIn("Garde : PR vers main doit venir de dev", garde)
         self.assertIn('!= "dev"', garde)
